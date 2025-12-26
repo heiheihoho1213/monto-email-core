@@ -1,0 +1,295 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .:
+    dependencies:
+      '@usewaypoint/block-avatar':
+        specifier: 0.0.3
+        version: 0.0.3(react@18.3.1)(zod@3.25.76)
+      '@usewaypoint/block-button':
+        specifier: 0.0.3
+        version: 0.0.3(react@18.3.1)(zod@3.25.76)
+      '@usewaypoint/block-columns-container':
+        specifier: 0.0.3
+        version: 0.0.3(react@18.3.1)(zod@3.25.76)
+      '@usewaypoint/block-container':
+        specifier: 0.0.2
+        version: 0.0.2(react@18.3.1)(zod@3.25.76)
+      '@usewaypoint/block-divider':
+        specifier: 0.0.4
+        version: 0.0.4(react@18.3.1)(zod@3.25.76)
+      '@usewaypoint/block-heading':
+        specifier: 0.0.3
+        version: 0.0.3(react@18.3.1)(zod@3.25.76)
+      '@usewaypoint/block-html':
+        specifier: 0.0.3
+        version: 0.0.3(react@18.3.1)(zod@3.25.76)
+      '@usewaypoint/block-image':
+        specifier: 0.0.5
+        version: 0.0.5(react@18.3.1)(zod@3.25.76)
+      '@usewaypoint/block-spacer':
+        specifier: 0.0.3
+        version: 0.0.3(react@18.3.1)(zod@3.25.76)
+      '@usewaypoint/block-text':
+        specifier: 0.0.6
+        version: 0.0.6(react@18.3.1)(zod@3.25.76)
+      '@usewaypoint/document-core':
+        specifier: 0.0.6
+        version: 0.0.6(react@18.3.1)(zod@3.25.76)
+      monto-email-block-video:
+        specifier: 0.0.1
+        version: 0.0.1(react@18.3.1)(zod@3.25.76)
+    devDependencies:
+      '@types/react':
+        specifier: ^16 || ^17 || ^18
+        version: 18.3.27
+      react:
+        specifier: ^16 || ^17 || ^18
+        version: 18.3.1
+      react-dom:
+        specifier: ^16 || ^17 || ^18
+        version: 18.3.1(react@18.3.1)
+      typescript:
+        specifier: ^5.0.0
+        version: 5.9.3
+      zod:
+        specifier: ^1 || ^2 || ^3
+        version: 3.25.76
+
+packages:
+
+  '@types/prop-types@15.7.15':
+    resolution: {integrity: sha512-F6bEyamV9jKGAFBEmlQnesRPGOQqS2+Uwi0Em15xenOxHaf2hv6L8YCVn3rPdPJOiJfPiCnLIRyvwVaqMY3MIw==}
+
+  '@types/react@18.3.27':
+    resolution: {integrity: sha512-cisd7gxkzjBKU2GgdYrTdtQx1SORymWyaAFhaxQPK9bYO9ot3Y5OikQRvY0VYQtvwjeQnizCINJAenh/V7MK2w==}
+
+  '@usewaypoint/block-avatar@0.0.3':
+    resolution: {integrity: sha512-3BM6P4ztMmqDbSijtVQqI1canRkcENOEHZ2X9BYNv8BZGJbmitTrzANvwmmYXfFEuWPCAyABvujdZds15Zg8Qg==}
+    peerDependencies:
+      react: ^16 || ^17 || ^18
+      zod: ^1 || ^2 || ^3
+
+  '@usewaypoint/block-button@0.0.3':
+    resolution: {integrity: sha512-LXSI3FmCTv13voYX4wdHY7iJdsfyRfpDJZCFKSun5EF1j9FXrqMDGScpk/yokopkQWvWkYXQNAne7W0yWhRQlg==}
+    peerDependencies:
+      react: ^16 || ^17 || ^18
+      zod: ^1 || ^2 || ^3
+
+  '@usewaypoint/block-columns-container@0.0.3':
+    resolution: {integrity: sha512-r5jaojU1Fr6Svtl0a9dDlBHgslJQ04M+XaXaEO+GZ12+35fdAirpLkrEhuyBIA1FFXzRTG740wkbkr++iv1kuA==}
+    peerDependencies:
+      react: ^16 || ^17 || ^18
+      zod: ^1 || ^2 || ^3
+
+  '@usewaypoint/block-container@0.0.2':
+    resolution: {integrity: sha512-li9GVdiahVpJ+MNRdkoCkP6/hBTdcpaLRGpaFBSQRkVt+cYAeB7qPNIo+242hUvVTm5Qky8ceGLDVblGYSZb7A==}
+    peerDependencies:
+      react: ^16 || ^17 || ^18
+      zod: ^1 || ^2 || ^3
+
+  '@usewaypoint/block-divider@0.0.4':
+    resolution: {integrity: sha512-q54ydWvKdg7Zwc4hzIwE6i/mC8dFYxfPRACEEEyu2dvSNa9cbKFIsPD9ipVSntK+Ib3Ml84uT4aHQmOlzP6hZA==}
+    peerDependencies:
+      react: ^16 || ^17 || ^18
+      zod: ^1 || ^2 || ^3
+
+  '@usewaypoint/block-heading@0.0.3':
+    resolution: {integrity: sha512-1dMrf1U34nq2FuwTUfsq+hBOdLQz1H+lVMEH9xvyCq5I7nSXCzpeo7QgumZ3zZEHtu3QgSEGafJaZyrj2paC0w==}
+    peerDependencies:
+      react: ^16 || ^17 || ^18
+      zod: ^1 || ^2 || ^3
+
+  '@usewaypoint/block-html@0.0.3':
+    resolution: {integrity: sha512-ZI9oYDibMzs5y/YzfvUwuUBzHDKHOIjiStiVCvlmIA+VtJTycqT8X/ECjn+KmwesLTg5DhG07CC4WY2SL3AnJw==}
+    peerDependencies:
+      react: ^16 || ^17 || ^18
+      zod: ^1 || ^2 || ^3
+
+  '@usewaypoint/block-image@0.0.5':
+    resolution: {integrity: sha512-b66jAXF79idsrIRc2QoBlZctIXdqg/qOAL7/QvKvENZH2KmuXoZhEUx+Z7sACvEQD/VI0u7TK5msDsA5S0/oVQ==}
+    peerDependencies:
+      react: ^16 || ^17 || ^18
+      zod: ^1 || ^2 || ^3
+
+  '@usewaypoint/block-spacer@0.0.3':
+    resolution: {integrity: sha512-CCcMtwcpeC2rHvawQdh5f0Hez7o4xA/edWl/6I3RuA6Yb6STyyrGjmPFs2ZxHQsLOGUK+0OvBenuHlSTCZwuuA==}
+    peerDependencies:
+      react: ^16 || ^17 || ^18
+      zod: ^1 || ^2 || ^3
+
+  '@usewaypoint/block-text@0.0.6':
+    resolution: {integrity: sha512-tsKTNLXUYs1PkM8G5sgIhO3KnW1IFTx2q+lnq5Y4prHeHNBrArez5BbwAyvwBKnhcIt5c4gYL2CSklIU4+hLLw==}
+    peerDependencies:
+      react: ^16 || ^17 || ^18
+      zod: ^1 || ^2 || ^3
+
+  '@usewaypoint/document-core@0.0.6':
+    resolution: {integrity: sha512-Hg10gszVCZRJhA4nIWwAi2rTXuoxPL+ATMe0hU243PFBIUZOwDIQus4XZSeoHsenMCq1uBFCRiFW4hl2+tVwgA==}
+    peerDependencies:
+      react: ^16 || ^17 || ^18
+      zod: ^1 || ^2 || ^3
+
+  assignment@2.0.0:
+    resolution: {integrity: sha512-naMULXjtgCs9SVUEtyvJNt68aF18em7/W+dhbR59kbz9cXWPEvUkCun2tqlgqRPSqZaKPpqLc5ZnwL8jVmJRvw==}
+
+  csstype@3.2.3:
+    resolution: {integrity: sha512-z1HGKcYy2xA8AGQfwrn0PAy+PB7X/GSj3UVJW9qKyn43xWa+gl5nXmU4qqLMRzWVLFC8KusUX8T/0kCiOYpAIQ==}
+
+  he@0.5.0:
+    resolution: {integrity: sha512-DoufbNNOFzwRPy8uecq+j+VCPQ+JyDelHTmSgygrA5TsR8Cbw4Qcir5sGtWiusB4BdT89nmlaVDhSJOqC/33vw==}
+    hasBin: true
+
+  insane@2.6.2:
+    resolution: {integrity: sha512-BqEL1CJsjJi+/C/zKZxv31zs3r6zkLH5Nz1WMFb7UBX2KHY2yXDpbFTSEmNHzomBbGDysIfkTX55A0mQZ2CQiw==}
+
+  js-tokens@4.0.0:
+    resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
+
+  loose-envify@1.4.0:
+    resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
+    hasBin: true
+
+  marked@12.0.2:
+    resolution: {integrity: sha512-qXUm7e/YKFoqFPYPa3Ukg9xlI5cyAtGmyEIzMfW//m6kXwCy2Ps9DYf5ioijFKQ8qyuscrHoY04iJGctu2Kg0Q==}
+    engines: {node: '>= 18'}
+    hasBin: true
+
+  monto-email-block-video@0.0.1:
+    resolution: {integrity: sha512-8HEe3PT5WlKNZYPSWh67qpXKEeNWChCOdwv1jIUiKDNiMRslVtf41dyqpJOzNWmn55CyZzog4/6xu68h34H5Ig==}
+    peerDependencies:
+      react: ^16 || ^17 || ^18
+      zod: ^1 || ^2 || ^3
+
+  react-dom@18.3.1:
+    resolution: {integrity: sha512-5m4nQKp+rZRb09LNH59GM4BxTh9251/ylbKIbpe7TpGxfJ+9kv6BLkLBXIjjspbgbnIBNqlI23tRnTWT0snUIw==}
+    peerDependencies:
+      react: ^18.3.1
+
+  react@18.3.1:
+    resolution: {integrity: sha512-wS+hAgJShR0KhEvPJArfuPVN1+Hz1t0Y6n5jLrGQbkb4urgPE/0Rve+1kMB1v/oWgHgm4WIcV+i7F2pTVj+2iQ==}
+    engines: {node: '>=0.10.0'}
+
+  scheduler@0.23.2:
+    resolution: {integrity: sha512-UOShsPwz7NrMUqhR6t0hWjFduvOzbtv7toDH1/hIrfRNIDBnnBWd0CwJTGvTpngVlmwGCdP9/Zl/tVrDqcuYzQ==}
+
+  typescript@5.9.3:
+    resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+
+  zod@3.25.76:
+    resolution: {integrity: sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==}
+
+snapshots:
+
+  '@types/prop-types@15.7.15': {}
+
+  '@types/react@18.3.27':
+    dependencies:
+      '@types/prop-types': 15.7.15
+      csstype: 3.2.3
+
+  '@usewaypoint/block-avatar@0.0.3(react@18.3.1)(zod@3.25.76)':
+    dependencies:
+      react: 18.3.1
+      zod: 3.25.76
+
+  '@usewaypoint/block-button@0.0.3(react@18.3.1)(zod@3.25.76)':
+    dependencies:
+      react: 18.3.1
+      zod: 3.25.76
+
+  '@usewaypoint/block-columns-container@0.0.3(react@18.3.1)(zod@3.25.76)':
+    dependencies:
+      react: 18.3.1
+      zod: 3.25.76
+
+  '@usewaypoint/block-container@0.0.2(react@18.3.1)(zod@3.25.76)':
+    dependencies:
+      react: 18.3.1
+      zod: 3.25.76
+
+  '@usewaypoint/block-divider@0.0.4(react@18.3.1)(zod@3.25.76)':
+    dependencies:
+      react: 18.3.1
+      zod: 3.25.76
+
+  '@usewaypoint/block-heading@0.0.3(react@18.3.1)(zod@3.25.76)':
+    dependencies:
+      react: 18.3.1
+      zod: 3.25.76
+
+  '@usewaypoint/block-html@0.0.3(react@18.3.1)(zod@3.25.76)':
+    dependencies:
+      react: 18.3.1
+      zod: 3.25.76
+
+  '@usewaypoint/block-image@0.0.5(react@18.3.1)(zod@3.25.76)':
+    dependencies:
+      react: 18.3.1
+      zod: 3.25.76
+
+  '@usewaypoint/block-spacer@0.0.3(react@18.3.1)(zod@3.25.76)':
+    dependencies:
+      react: 18.3.1
+      zod: 3.25.76
+
+  '@usewaypoint/block-text@0.0.6(react@18.3.1)(zod@3.25.76)':
+    dependencies:
+      insane: 2.6.2
+      marked: 12.0.2
+      react: 18.3.1
+      zod: 3.25.76
+
+  '@usewaypoint/document-core@0.0.6(react@18.3.1)(zod@3.25.76)':
+    dependencies:
+      react: 18.3.1
+      zod: 3.25.76
+
+  assignment@2.0.0: {}
+
+  csstype@3.2.3: {}
+
+  he@0.5.0: {}
+
+  insane@2.6.2:
+    dependencies:
+      assignment: 2.0.0
+      he: 0.5.0
+
+  js-tokens@4.0.0: {}
+
+  loose-envify@1.4.0:
+    dependencies:
+      js-tokens: 4.0.0
+
+  marked@12.0.2: {}
+
+  monto-email-block-video@0.0.1(react@18.3.1)(zod@3.25.76):
+    dependencies:
+      react: 18.3.1
+      zod: 3.25.76
+
+  react-dom@18.3.1(react@18.3.1):
+    dependencies:
+      loose-envify: 1.4.0
+      react: 18.3.1
+      scheduler: 0.23.2
+
+  react@18.3.1:
+    dependencies:
+      loose-envify: 1.4.0
+
+  scheduler@0.23.2:
+    dependencies:
+      loose-envify: 1.4.0
+
+  typescript@5.9.3: {}
+
+  zod@3.25.76: {}

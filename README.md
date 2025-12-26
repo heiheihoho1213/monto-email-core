@@ -1,1 +1,1 @@
-# usewaypoint/email-builder
+# monto-email-core

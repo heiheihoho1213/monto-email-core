@@ -2,16 +2,14 @@ export { default as renderToStaticMarkup } from './renderers/renderToStaticMarku
 
 export {
   ReaderBlockSchema,
+  TReaderBlock,
   //
   ReaderDocumentSchema,
+  TReaderDocument,
   //
   ReaderBlock,
-  default as Reader,
-} from './Reader/core';
-
-export type {
-  TReaderBlock,
-  TReaderDocument,
   TReaderBlockProps,
+  //
   TReaderProps,
+  default as Reader,
 } from './Reader/core';

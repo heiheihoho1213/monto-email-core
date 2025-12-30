@@ -1,6 +1,6 @@
 {
   "name": "monto-email-core",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "React component to render email messages",
   "main": "./dist/index.js",
   "module": "./dist/index.js",

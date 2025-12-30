@@ -58,7 +58,7 @@ export default function EmailLayoutReader(props: EmailLayoutProps) {
         width="100%"
         style={{
           margin: '0 auto',
-          maxWidth: '600px',
+          maxWidth: props.width ? `${props.width}px` : '600px',
           backgroundColor: props.canvasColor ?? '#FFFFFF',
           borderRadius: props.borderRadius ?? undefined,
           border: getBorder(props),

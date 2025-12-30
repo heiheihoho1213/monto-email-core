@@ -52,6 +52,7 @@ export default function ColumnsContainerReader({ style, props }: ColumnsContaine
         width="100%"
         style={{
           width: '100%',
+          tableLayout: 'fixed',
           ...paddingStyle,
           ...backgroundColorStyle,
         }}

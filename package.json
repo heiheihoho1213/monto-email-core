@@ -1,6 +1,6 @@
 {
   "name": "monto-email-core",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "React component to render email messages",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -45,6 +45,7 @@
     "@usewaypoint/block-spacer": "0.0.3",
     "@usewaypoint/block-text": "0.0.6",
     "@usewaypoint/document-core": "0.0.6",
-    "monto-email-block-video": "0.0.1"
+    "monto-email-block-video": "0.0.1",
+    "monto-email-block-socials": "0.0.2"
   }
 }

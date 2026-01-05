@@ -10,6 +10,7 @@ import { Image, ImagePropsSchema } from '@usewaypoint/block-image';
 import { Spacer, SpacerPropsSchema } from '@usewaypoint/block-spacer';
 import { Text, TextPropsSchema } from '@usewaypoint/block-text';
 import { Video, VideoPropsSchema } from 'monto-email-block-video';
+import { Socials, SocialsPropsSchema } from 'monto-email-block-socials';
 import {
   buildBlockComponent,
   buildBlockConfigurationDictionary,
@@ -85,6 +86,10 @@ const READER_DICTIONARY = buildBlockConfigurationDictionary({
     schema: VideoPropsSchema,
     Component: VideoWrapper,
   },
+  Socials: {
+    schema: SocialsPropsSchema,
+    Component: Socials,
+  },
 });
 
 export const ReaderBlockSchema = buildBlockConfigurationSchema(READER_DICTIONARY);
@@ -95,10 +100,30 @@ export type TReaderDocument = Record<string, TReaderBlock>;
 
 const BaseReaderBlock = buildBlockComponent(READER_DICTIONARY);
 
-export type TReaderBlockProps = { id: string };
-export function ReaderBlock({ id }: TReaderBlockProps) {
-  const document = useReaderDocument();
-  return <BaseReaderBlock {...document[id]} />;
+export type TReaderBlockProps = { id: string; document?: TReaderDocument };
+export function ReaderBlock({ id, document: documentProp }: TReaderBlockProps) {
+  // 如果提供了 document prop，直接使用（SSR 渲染时）
+  if (documentProp) {
+    const block = documentProp[id];
+    if (!block) {
+      return null;
+    }
+    return <BaseReaderBlock {...block} />;
+  }
+
+  // 否则从 Context 获取（客户端渲染时）
+  // 使用 Consumer 而不是 Hook，以避免 SSR 问题
+  return (
+    <ReaderContext.Consumer>
+      {(document) => {
+        const block = document[id];
+        if (!block) {
+          return null;
+        }
+        return <BaseReaderBlock {...block} />;
+      }}
+    </ReaderContext.Consumer>
+  );
 }
 
 export type TReaderProps = {
@@ -108,7 +133,7 @@ export type TReaderProps = {
 export default function Reader({ document, rootBlockId }: TReaderProps) {
   return (
     <ReaderContext.Provider value={document}>
-      <ReaderBlock id={rootBlockId} />
+      <ReaderBlock id={rootBlockId} document={document} />
     </ReaderContext.Provider>
   );
 }

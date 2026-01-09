@@ -62,6 +62,7 @@ export default function EmailLayoutReader(props: EmailLayoutProps) {
           backgroundColor: props.canvasColor ?? '#FFFFFF',
           borderRadius: props.borderRadius ?? undefined,
           border: getBorder(props),
+          overflow: 'hidden',
         }}
         role="presentation"
         cellSpacing="0"

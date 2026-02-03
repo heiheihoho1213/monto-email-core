@@ -1,11 +1,10 @@
 import React, { createContext, useContext } from 'react';
 import { z } from 'zod';
 
-import { Avatar, AvatarPropsSchema } from '@usewaypoint/block-avatar';
 import { Button, ButtonPropsSchema } from '@usewaypoint/block-button';
 import { Divider, DividerPropsSchema } from '@usewaypoint/block-divider';
 import { Heading, HeadingPropsSchema } from '@usewaypoint/block-heading';
-import { Html, HtmlPropsSchema } from '@usewaypoint/block-html';
+import { Html, HtmlPropsSchema } from 'monto-email-block-html';
 import { Image, ImagePropsSchema } from '@usewaypoint/block-image';
 import { Spacer, SpacerPropsSchema } from '@usewaypoint/block-spacer';
 import { Text, TextPropsSchema } from '@usewaypoint/block-text';
@@ -32,7 +31,7 @@ function VideoWrapper(props: Parameters<typeof Video>[0]): React.ReactElement {
 
 const ReaderContext = createContext<TReaderDocument>({});
 
-function useReaderDocument() {
+export function useReaderDocument() {
   return useContext(ReaderContext);
 }
 
@@ -48,11 +47,6 @@ const READER_DICTIONARY = buildBlockConfigurationDictionary({
   EmailLayout: {
     schema: EmailLayoutPropsSchema,
     Component: EmailLayoutReader,
-  },
-  //
-  Avatar: {
-    schema: AvatarPropsSchema,
-    Component: Avatar,
   },
   Button: {
     schema: ButtonPropsSchema,
@@ -130,9 +124,12 @@ export type TReaderProps = {
   document: Record<string, z.infer<typeof ReaderBlockSchema>>;
   rootBlockId: string;
 };
+const STRETCH_BLOCK_WRAPPER_STYLE = `[data-stretch-block-wrapper] > * { height: 100%; min-height: 0; box-sizing: border-box; }`;
+
 export default function Reader({ document, rootBlockId }: TReaderProps) {
   return (
     <ReaderContext.Provider value={document}>
+      <style>{STRETCH_BLOCK_WRAPPER_STYLE}</style>
       <ReaderBlock id={rootBlockId} document={document} />
     </ReaderContext.Provider>
   );

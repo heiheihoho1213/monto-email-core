@@ -1,105 +1,120 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 
-import { ColumnsContainer as BaseColumnsContainer } from '@usewaypoint/block-columns-container';
-
-import { ReaderBlock } from '../../Reader/core';
+import { ReaderBlock, useReaderDocument } from '../../Reader/core';
 
 import { ColumnsContainerProps } from './ColumnsContainerPropsSchema';
 
+const STRETCH_BLOCK_TYPES = ['Heading', 'Text', 'Container'];
+
+const CONTENT_ALIGNMENT_MAP: Record<string, 'flex-start' | 'center' | 'flex-end' | 'stretch'> = {
+  top: 'flex-start',
+  middle: 'center',
+  bottom: 'flex-end',
+  stretch: 'stretch',
+};
+
+const COLUMN_WORD_WRAP: CSSProperties = {
+  wordWrap: 'break-word',
+  wordBreak: 'break-word',
+  overflowWrap: 'break-word',
+};
+
+/** 不等分比例时：小列 0 0 X%，大列 flex: 1 1 0 铺满剩余；数值 <=100 视为百分比 */
+function getColumnFlex(
+  fixedWidths: [number | null | undefined, number | null | undefined, number | null | undefined, number | null | undefined] | null | undefined,
+  index: number,
+  count: number
+): string {
+  const fixedW = fixedWidths?.[index];
+  if (fixedW == null) return '1 1 0';
+  const inUse = (fixedWidths ? Array.from(fixedWidths) : []).slice(0, count).filter((v): v is number => v != null);
+  const usePercentage = inUse.length > 0 && inUse.every((v) => v <= 100);
+  if (usePercentage) {
+    const maxVal = Math.max(...inUse);
+    if (fixedW === maxVal) return '1 1 0';
+    return `0 0 ${fixedW}%`;
+  }
+  return `0 0 ${fixedW}px`;
+}
+
 export default function ColumnsContainerReader({ style, props }: ColumnsContainerProps) {
+  const document = useReaderDocument();
   const { columns, columnsCount, ...restProps } = props ?? {};
   const count = columnsCount ?? (columns?.length ?? 3);
+  const columnsGap = (restProps && 'columnsGap' in restProps) ? restProps.columnsGap ?? 0 : 0;
+  const contentAlignment = (restProps && 'contentAlignment' in restProps) ? restProps.contentAlignment ?? 'middle' : 'middle';
+  const fixedWidths = (restProps && 'fixedWidths' in restProps) ? restProps.fixedWidths : undefined;
+  const isStretch = contentAlignment === 'stretch';
 
-  let cols = undefined;
+  let cols: React.ReactNode[] | undefined;
   if (columns) {
-    cols = columns.map((col) => col.childrenIds.map((childId) => <ReaderBlock key={childId} id={childId} />));
-  }
-
-  // BaseColumnsContainer 只支持 2 或 3 列，对于 1 或 4 列，我们需要自定义渲染
-  if (count === 1 || count === 4) {
-    const columnsGap = (restProps && 'columnsGap' in restProps) ? restProps.columnsGap ?? 0 : 0;
-    const contentAlignment = (restProps && 'contentAlignment' in restProps) ? restProps.contentAlignment ?? 'middle' : 'middle';
-    const fixedWidths = (restProps && 'fixedWidths' in restProps) ? restProps.fixedWidths : undefined;
-
-    // 计算列宽
-    const getColumnWidth = (index: number): string => {
-      if (fixedWidths && fixedWidths[index] !== null && fixedWidths[index] !== undefined) {
-        return `${fixedWidths[index]}%`;
-      }
-      return count === 1 ? '100%' : '25%';
-    };
-
-    // 对于HTML邮件，使用table布局
-    const paddingStyle = style?.padding
-      ? {
-        paddingTop: `${style.padding.top}px`,
-        paddingRight: `${style.padding.right}px`,
-        paddingBottom: `${style.padding.bottom}px`,
-        paddingLeft: `${style.padding.left}px`,
-      }
-      : {};
-
-    const backgroundColorStyle = style?.backgroundColor
-      ? { backgroundColor: style.backgroundColor }
-      : {};
-
-    return (
-      <table
-        role="presentation"
-        cellSpacing="0"
-        cellPadding="0"
-        border={0}
-        width="100%"
-        style={{
-          width: '100%',
-          tableLayout: 'fixed',
-          ...paddingStyle,
-          ...backgroundColorStyle,
-        }}
-      >
-        <tbody>
-          <tr>
-            {cols?.map((col, index) => (
-              <td
-                key={index}
-                width={getColumnWidth(index)}
-                style={{
-                  width: getColumnWidth(index),
-                  verticalAlign: contentAlignment === 'top' ? 'top' : contentAlignment === 'bottom' ? 'bottom' : 'middle',
-                  paddingLeft: index > 0 ? `${columnsGap / 2}px` : '0',
-                  paddingRight: index < (count - 1) ? `${columnsGap / 2}px` : '0',
-                }}
-              >
-                {col}
-              </td>
-            ))}
-          </tr>
-        </tbody>
-      </table>
+    cols = columns.map((col) =>
+      col.childrenIds.map((childId) => {
+        const blockType = document[childId]?.type;
+        const content = <ReaderBlock key={childId} id={childId} />;
+        if (isStretch && blockType && STRETCH_BLOCK_TYPES.includes(blockType)) {
+          return (
+            <div
+              key={childId}
+              data-stretch-block-wrapper="true"
+              style={{ height: '100%', minHeight: 0, display: 'flex', flexDirection: 'column' }}
+            >
+              {content}
+            </div>
+          );
+        }
+        return content;
+      })
     );
   }
-
-  // 对于 2 或 3 列，使用 BaseColumnsContainer
-  // 需要过滤掉 fixedWidths 的第4个元素（如果存在）
-  let baseFixedWidths: [number | null | undefined, number | null | undefined, number | null | undefined] | undefined = undefined;
-
-  if (restProps && 'fixedWidths' in restProps && restProps.fixedWidths) {
-    baseFixedWidths = [restProps.fixedWidths[0], restProps.fixedWidths[1], restProps.fixedWidths[2]];
-  }
-
-  // 创建不包含 fixedWidths 的 baseProps
-  const baseProps: any = {
-    ...(restProps && typeof restProps === 'object' ? restProps : {}),
-    columnsCount: count as 2 | 3,
+  const wStyle: CSSProperties = {
+    backgroundColor: style?.backgroundColor ?? undefined,
+    padding: style?.padding
+      ? `${style.padding.top}px ${style.padding.right}px ${style.padding.bottom}px ${style.padding.left}px`
+      : undefined,
+    ...(isStretch && { height: '100%', display: 'flex', flexDirection: 'column', minHeight: 0 }),
   };
 
-  // 如果有 fixedWidths，只取前3个元素
-  if (baseFixedWidths !== undefined) {
-    baseProps.fixedWidths = baseFixedWidths;
-  } else if (restProps && 'fixedWidths' in restProps) {
-    // 如果原 fixedWidths 是 null 或 undefined，也传递 null
-    baseProps.fixedWidths = null;
-  }
+  const alignItems = CONTENT_ALIGNMENT_MAP[contentAlignment] ?? 'center';
+  const flexRowStyle: CSSProperties = {
+    display: 'flex',
+    flexDirection: 'row',
+    width: '100%',
+    gap: columnsGap,
+    alignItems,
+    ...(isStretch && { flex: 1, minHeight: 0, alignSelf: 'stretch' }),
+  };
 
-  return <BaseColumnsContainer props={baseProps} columns={cols} style={style} />;
+  return (
+    <div style={wStyle}>
+      <div style={flexRowStyle}>
+        {cols?.map((col, index) => {
+          if (index >= count) return null;
+          const flexVal = getColumnFlex(fixedWidths, index, count);
+          const flexStyle: CSSProperties = {
+            boxSizing: 'content-box',
+            flex: flexVal,
+            minWidth: 0,
+            display: 'flex',
+            flexDirection: 'column',
+            ...(isStretch
+              ? { minHeight: 0, alignSelf: 'stretch' }
+              : { justifyContent: (CONTENT_ALIGNMENT_MAP[contentAlignment] ?? 'center') as 'flex-start' | 'center' | 'flex-end' }),
+            ...COLUMN_WORD_WRAP,
+          };
+          return (
+            <div key={index} style={flexStyle}>
+              {isStretch ? (
+                <div style={{ flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column' }}>
+                  {col}
+                </div>
+              ) : (
+                col
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
 }

@@ -33,14 +33,14 @@ importers:
         specifier: 0.0.6
         version: 0.0.6(react@18.3.1)(zod@3.25.76)
       monto-email-block-columns-container:
-        specifier: 0.0.1
-        version: 0.0.1(react@18.3.1)(zod@3.25.76)
+        specifier: 0.0.2
+        version: 0.0.2(react@18.3.1)(zod@3.25.76)
       monto-email-block-html:
         specifier: 0.0.1
         version: 0.0.1(react@18.3.1)(zod@3.25.76)
       monto-email-block-socials:
-        specifier: 0.0.6
-        version: 0.0.6(react@18.3.1)(zod@3.25.76)
+        specifier: 0.0.7
+        version: 0.0.7(react@18.3.1)(zod@3.25.76)
       monto-email-block-video:
         specifier: 0.0.1
         version: 0.0.1(react@18.3.1)(zod@3.25.76)
@@ -150,8 +150,8 @@ packages:
     engines: {node: '>= 18'}
     hasBin: true
 
-  monto-email-block-columns-container@0.0.1:
-    resolution: {integrity: sha512-VmpkhG9WUkHqBPyzyfwQzKGuiIS4ceOWwRe5l90NtTX3nu7gUPCAdCaBe6ZgQAMdUnNfebduGxbb2qHxjghYHg==}
+  monto-email-block-columns-container@0.0.2:
+    resolution: {integrity: sha512-PFo8WEVfeT+63pHHbfm7HUTRxBGIM1Fmg9oKQMbY8l0lk3i/RIu29jzzBd1pbl1tSQlKovCdb/bzacG3q118tw==}
     peerDependencies:
       react: ^16 || ^17 || ^18
       zod: ^1 || ^2 || ^3
@@ -162,8 +162,8 @@ packages:
       react: ^16 || ^17 || ^18
       zod: ^1 || ^2 || ^3
 
-  monto-email-block-socials@0.0.6:
-    resolution: {integrity: sha512-GdweHYzdhEk9suQBU0wxI5FCZmlbbkBVYPkEfvIwSJR+ZIACAVCiadP5wvazdFMVh7D/AW+iXmMjQlzwC2AmpQ==}
+  monto-email-block-socials@0.0.7:
+    resolution: {integrity: sha512-cnmBfaFH/c+ULyYUh2FJ5R1Dde2IAERt1t5hcnVdscoW8fpa8iLRu1FvzRwQj4khLJbZsKMdap3LqX+4ZQrPlQ==}
     peerDependencies:
       react: ^16 || ^17 || ^18
       zod: ^1 || ^2 || ^3
@@ -268,7 +268,7 @@ snapshots:
 
   marked@12.0.2: {}
 
-  monto-email-block-columns-container@0.0.1(react@18.3.1)(zod@3.25.76):
+  monto-email-block-columns-container@0.0.2(react@18.3.1)(zod@3.25.76):
     dependencies:
       react: 18.3.1
       zod: 3.25.76
@@ -278,7 +278,7 @@ snapshots:
       react: 18.3.1
       zod: 3.25.76
 
-  monto-email-block-socials@0.0.6(react@18.3.1)(zod@3.25.76):
+  monto-email-block-socials@0.0.7(react@18.3.1)(zod@3.25.76):
     dependencies:
       react: 18.3.1
       zod: 3.25.76

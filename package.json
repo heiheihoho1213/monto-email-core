@@ -44,7 +44,7 @@
     "@usewaypoint/document-core": "0.0.6",
     "monto-email-block-html": "0.0.1",
     "monto-email-block-video": "0.0.1",
-    "monto-email-block-socials": "0.0.7",
+    "monto-email-block-socials": "0.0.8",
     "monto-email-block-columns-container": "0.0.2"
   }
 }

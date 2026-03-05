@@ -6,11 +6,12 @@ import { ColumnsContainerProps } from './ColumnsContainerPropsSchema';
 
 const STRETCH_BLOCK_TYPES = ['Heading', 'Text', 'Container'];
 
-const CONTENT_ALIGNMENT_MAP: Record<string, 'flex-start' | 'center' | 'flex-end' | 'stretch'> = {
-  top: 'flex-start',
-  middle: 'center',
-  bottom: 'flex-end',
-  stretch: 'stretch',
+// 垂直对齐映射：table 的 valign 属性
+const VERTICAL_ALIGNMENT_MAP: Record<'top' | 'middle' | 'bottom' | 'stretch', 'top' | 'middle' | 'bottom'> = {
+  top: 'top',
+  middle: 'middle',
+  bottom: 'bottom',
+  stretch: 'top', // stretch 模式需要特殊处理
 };
 
 const COLUMN_WORD_WRAP: CSSProperties = {
@@ -19,22 +20,41 @@ const COLUMN_WORD_WRAP: CSSProperties = {
   overflowWrap: 'break-word',
 };
 
-/** 不等分比例时：小列 0 0 X%，大列 flex: 1 1 0 铺满剩余；数值 <=100 视为百分比 */
-function getColumnFlex(
+/** 计算列的宽度（用于 table 布局） */
+function getColumnWidth(
   fixedWidths: [number | null | undefined, number | null | undefined, number | null | undefined, number | null | undefined] | null | undefined,
   index: number,
-  count: number
+  columnsCount: number
 ): string {
   const fixedW = fixedWidths?.[index];
-  if (fixedW == null) return '1 1 0';
-  const inUse = (fixedWidths ? Array.from(fixedWidths) : []).slice(0, count).filter((v): v is number => v != null);
+
+  // 如果没有固定宽度，均分所有列
+  if (fixedW == null) {
+    // 计算每列的宽度百分比
+    const equalWidth = 100 / columnsCount;
+    // 最后一列使用剩余宽度，确保总和为 100%
+    if (index === columnsCount - 1) {
+      const previousColumnsWidth = equalWidth * (columnsCount - 1);
+      const remainingWidth = 100 - previousColumnsWidth;
+      return `${remainingWidth.toFixed(2)}%`;
+    }
+    return `${equalWidth.toFixed(2)}%`;
+  }
+
+  const inUse = (fixedWidths ?? []).slice(0, columnsCount).filter((v): v is number => v != null);
   const usePercentage = inUse.length > 0 && inUse.every((v) => v <= 100);
+
   if (usePercentage) {
     const maxVal = Math.max(...inUse);
-    if (fixedW === maxVal) return '1 1 0';
-    return `0 0 ${fixedW}%`;
+    if (fixedW === maxVal) {
+      // 大列铺满剩余，计算剩余百分比
+      const fixedTotal = inUse.filter((v) => v !== maxVal).reduce((sum, v) => sum + v, 0);
+      const remainingPercent = 100 - fixedTotal;
+      return `${remainingPercent.toFixed(2)}%`;
+    }
+    return `${fixedW}%`;
   }
-  return `0 0 ${fixedW}px`;
+  return `${fixedW}px`;
 }
 
 export default function ColumnsContainerReader({ style, props }: ColumnsContainerProps) {
@@ -57,7 +77,7 @@ export default function ColumnsContainerReader({ style, props }: ColumnsContaine
             <div
               key={childId}
               data-stretch-block-wrapper="true"
-              style={{ height: '100%', minHeight: 0, display: 'flex', flexDirection: 'column' }}
+              style={{ height: '100%', minHeight: 0, width: '100%' }}
             >
               {content}
             </div>
@@ -68,53 +88,95 @@ export default function ColumnsContainerReader({ style, props }: ColumnsContaine
     );
   }
   const wStyle: CSSProperties = {
+    width: '100%',
+    boxSizing: 'border-box',
     backgroundColor: style?.backgroundColor ?? undefined,
     padding: style?.padding
       ? `${style.padding.top}px ${style.padding.right}px ${style.padding.bottom}px ${style.padding.left}px`
       : undefined,
-    ...(isStretch && { height: '100%', display: 'flex', flexDirection: 'column', minHeight: 0 }),
   };
 
-  const alignItems = CONTENT_ALIGNMENT_MAP[contentAlignment] ?? 'center';
-  const flexRowStyle: CSSProperties = {
-    display: 'flex',
-    flexDirection: 'row',
-    width: '100%',
-    gap: columnsGap,
-    alignItems,
-    ...(isStretch && { flex: 1, minHeight: 0, alignSelf: 'stretch' }),
-  };
+  // 计算列间距的 padding（左右各一半）
+  const gapPadding = columnsGap / 2;
+  const valign = VERTICAL_ALIGNMENT_MAP[contentAlignment] ?? 'middle';
 
   return (
     <div style={wStyle}>
-      <div style={flexRowStyle}>
-        {cols?.map((col, index) => {
-          if (index >= count) return null;
-          const flexVal = getColumnFlex(fixedWidths, index, count);
-          const flexStyle: CSSProperties = {
-            boxSizing: 'content-box',
-            flex: flexVal,
-            minWidth: 0,
-            display: 'flex',
-            flexDirection: 'column',
-            ...(isStretch
-              ? { minHeight: 0, alignSelf: 'stretch' }
-              : { justifyContent: (CONTENT_ALIGNMENT_MAP[contentAlignment] ?? 'center') as 'flex-start' | 'center' | 'flex-end' }),
-            ...COLUMN_WORD_WRAP,
-          };
-          return (
-            <div key={index} style={flexStyle}>
-              {isStretch ? (
-                <div style={{ flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column' }}>
+      <table
+        width="100%"
+        cellPadding="0"
+        cellSpacing="0"
+        border={0}
+        style={{
+          width: '100%',
+          borderCollapse: 'collapse',
+          display: 'table',
+        }}
+      >
+        <tbody>
+          <tr>
+            {cols?.map((col, index) => {
+              if (index >= count) return null;
+
+              const columnWidth = getColumnWidth(fixedWidths, index, count);
+
+              // 计算 padding：第一列只有右边距，最后一列只有左边距，中间列左右都有
+              const paddingLeft = index === 0 ? 0 : gapPadding;
+              const paddingRight = index === count - 1 ? 0 : gapPadding;
+
+              const tdStyle: CSSProperties = {
+                width: columnWidth,
+                padding: `0 ${paddingRight}px 0 ${paddingLeft}px`,
+                verticalAlign: valign,
+                ...COLUMN_WORD_WRAP,
+              };
+
+              // 如果是 stretch 模式，需要嵌套 table 来实现高度拉伸
+              if (isStretch) {
+                return (
+                  <td
+                    key={index}
+                    width={columnWidth}
+                    valign="top"
+                    style={tdStyle}
+                  >
+                    <table
+                      width="100%"
+                      cellPadding="0"
+                      cellSpacing="0"
+                      border={0}
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        borderCollapse: 'collapse',
+                      }}
+                    >
+                      <tbody>
+                        <tr>
+                          <td valign="top" style={{ height: '100%', ...COLUMN_WORD_WRAP }}>
+                            {col}
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                );
+              }
+
+              return (
+                <td
+                  key={index}
+                  width={columnWidth}
+                  valign={valign}
+                  style={tdStyle}
+                >
                   {col}
-                </div>
-              ) : (
-                col
-              )}
-            </div>
-          );
-        })}
-      </div>
+                </td>
+              );
+            })}
+          </tr>
+        </tbody>
+      </table>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Container as BaseContainer } from '@usewaypoint/block-container';
+import { Container as BaseContainer } from 'monto-email-block-container';
 
 import { ReaderBlock } from '../../Reader/core';
 

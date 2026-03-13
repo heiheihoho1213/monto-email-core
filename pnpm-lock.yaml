@@ -8,40 +8,40 @@ importers:
 
   .:
     dependencies:
-      '@usewaypoint/block-button':
-        specifier: 0.0.3
-        version: 0.0.3(react@18.3.1)(zod@3.25.76)
-      '@usewaypoint/block-container':
-        specifier: 0.0.2
-        version: 0.0.2(react@18.3.1)(zod@3.25.76)
-      '@usewaypoint/block-divider':
-        specifier: 0.0.4
-        version: 0.0.4(react@18.3.1)(zod@3.25.76)
-      '@usewaypoint/block-heading':
-        specifier: 0.0.3
-        version: 0.0.3(react@18.3.1)(zod@3.25.76)
-      '@usewaypoint/block-image':
-        specifier: 0.0.5
-        version: 0.0.5(react@18.3.1)(zod@3.25.76)
-      '@usewaypoint/block-spacer':
-        specifier: 0.0.3
-        version: 0.0.3(react@18.3.1)(zod@3.25.76)
-      '@usewaypoint/block-text':
-        specifier: 0.0.6
-        version: 0.0.6(react@18.3.1)(zod@3.25.76)
-      '@usewaypoint/document-core':
-        specifier: 0.0.6
-        version: 0.0.6(react@18.3.1)(zod@3.25.76)
+      monto-email-block-button:
+        specifier: 0.0.1
+        version: 0.0.1(react@18.3.1)(zod@3.25.76)
       monto-email-block-columns-container:
         specifier: 0.0.2
         version: 0.0.2(react@18.3.1)(zod@3.25.76)
+      monto-email-block-container:
+        specifier: 0.0.2
+        version: 0.0.2(react@18.3.1)(zod@3.25.76)
+      monto-email-block-divider:
+        specifier: 0.0.1
+        version: 0.0.1(react@18.3.1)(zod@3.25.76)
+      monto-email-block-heading:
+        specifier: 0.0.1
+        version: 0.0.1(react@18.3.1)(zod@3.25.76)
       monto-email-block-html:
+        specifier: 0.0.1
+        version: 0.0.1(react@18.3.1)(zod@3.25.76)
+      monto-email-block-image:
         specifier: 0.0.1
         version: 0.0.1(react@18.3.1)(zod@3.25.76)
       monto-email-block-socials:
         specifier: 0.0.8
         version: 0.0.8(react@18.3.1)(zod@3.25.76)
+      monto-email-block-spacer:
+        specifier: 0.0.1
+        version: 0.0.1(react@18.3.1)(zod@3.25.76)
+      monto-email-block-text:
+        specifier: 0.0.1
+        version: 0.0.1(react@18.3.1)(zod@3.25.76)
       monto-email-block-video:
+        specifier: 0.0.1
+        version: 0.0.1(react@18.3.1)(zod@3.25.76)
+      monto-email-document-core:
         specifier: 0.0.1
         version: 0.0.1(react@18.3.1)(zod@3.25.76)
     devDependencies:
@@ -77,54 +77,6 @@ packages:
   '@types/react@18.3.27':
     resolution: {integrity: sha512-cisd7gxkzjBKU2GgdYrTdtQx1SORymWyaAFhaxQPK9bYO9ot3Y5OikQRvY0VYQtvwjeQnizCINJAenh/V7MK2w==}
 
-  '@usewaypoint/block-button@0.0.3':
-    resolution: {integrity: sha512-LXSI3FmCTv13voYX4wdHY7iJdsfyRfpDJZCFKSun5EF1j9FXrqMDGScpk/yokopkQWvWkYXQNAne7W0yWhRQlg==}
-    peerDependencies:
-      react: ^16 || ^17 || ^18
-      zod: ^1 || ^2 || ^3
-
-  '@usewaypoint/block-container@0.0.2':
-    resolution: {integrity: sha512-li9GVdiahVpJ+MNRdkoCkP6/hBTdcpaLRGpaFBSQRkVt+cYAeB7qPNIo+242hUvVTm5Qky8ceGLDVblGYSZb7A==}
-    peerDependencies:
-      react: ^16 || ^17 || ^18
-      zod: ^1 || ^2 || ^3
-
-  '@usewaypoint/block-divider@0.0.4':
-    resolution: {integrity: sha512-q54ydWvKdg7Zwc4hzIwE6i/mC8dFYxfPRACEEEyu2dvSNa9cbKFIsPD9ipVSntK+Ib3Ml84uT4aHQmOlzP6hZA==}
-    peerDependencies:
-      react: ^16 || ^17 || ^18
-      zod: ^1 || ^2 || ^3
-
-  '@usewaypoint/block-heading@0.0.3':
-    resolution: {integrity: sha512-1dMrf1U34nq2FuwTUfsq+hBOdLQz1H+lVMEH9xvyCq5I7nSXCzpeo7QgumZ3zZEHtu3QgSEGafJaZyrj2paC0w==}
-    peerDependencies:
-      react: ^16 || ^17 || ^18
-      zod: ^1 || ^2 || ^3
-
-  '@usewaypoint/block-image@0.0.5':
-    resolution: {integrity: sha512-b66jAXF79idsrIRc2QoBlZctIXdqg/qOAL7/QvKvENZH2KmuXoZhEUx+Z7sACvEQD/VI0u7TK5msDsA5S0/oVQ==}
-    peerDependencies:
-      react: ^16 || ^17 || ^18
-      zod: ^1 || ^2 || ^3
-
-  '@usewaypoint/block-spacer@0.0.3':
-    resolution: {integrity: sha512-CCcMtwcpeC2rHvawQdh5f0Hez7o4xA/edWl/6I3RuA6Yb6STyyrGjmPFs2ZxHQsLOGUK+0OvBenuHlSTCZwuuA==}
-    peerDependencies:
-      react: ^16 || ^17 || ^18
-      zod: ^1 || ^2 || ^3
-
-  '@usewaypoint/block-text@0.0.6':
-    resolution: {integrity: sha512-tsKTNLXUYs1PkM8G5sgIhO3KnW1IFTx2q+lnq5Y4prHeHNBrArez5BbwAyvwBKnhcIt5c4gYL2CSklIU4+hLLw==}
-    peerDependencies:
-      react: ^16 || ^17 || ^18
-      zod: ^1 || ^2 || ^3
-
-  '@usewaypoint/document-core@0.0.6':
-    resolution: {integrity: sha512-Hg10gszVCZRJhA4nIWwAi2rTXuoxPL+ATMe0hU243PFBIUZOwDIQus4XZSeoHsenMCq1uBFCRiFW4hl2+tVwgA==}
-    peerDependencies:
-      react: ^16 || ^17 || ^18
-      zod: ^1 || ^2 || ^3
-
   assignment@2.0.0:
     resolution: {integrity: sha512-naMULXjtgCs9SVUEtyvJNt68aF18em7/W+dhbR59kbz9cXWPEvUkCun2tqlgqRPSqZaKPpqLc5ZnwL8jVmJRvw==}
 
@@ -150,8 +102,32 @@ packages:
     engines: {node: '>= 18'}
     hasBin: true
 
+  monto-email-block-button@0.0.1:
+    resolution: {integrity: sha512-rfhsUuGPtYaT7OGJNoDzNs60zJStb3qUWfLDjP04yr8/0qrPiVpeE7qsJI1AnfRt5jtIq9s5x0B+wG51X+EM3Q==}
+    peerDependencies:
+      react: ^16 || ^17 || ^18
+      zod: ^1 || ^2 || ^3
+
   monto-email-block-columns-container@0.0.2:
     resolution: {integrity: sha512-PFo8WEVfeT+63pHHbfm7HUTRxBGIM1Fmg9oKQMbY8l0lk3i/RIu29jzzBd1pbl1tSQlKovCdb/bzacG3q118tw==}
+    peerDependencies:
+      react: ^16 || ^17 || ^18
+      zod: ^1 || ^2 || ^3
+
+  monto-email-block-container@0.0.2:
+    resolution: {integrity: sha512-U9slGw6kw4MySfHrKF2uCbinhVZ+RjbvYKRICYUZmSMLMAu022hSEgfVK95zZA9sjM/Cv34rkFOJKQi+FInWsg==}
+    peerDependencies:
+      react: ^16 || ^17 || ^18
+      zod: ^1 || ^2 || ^3
+
+  monto-email-block-divider@0.0.1:
+    resolution: {integrity: sha512-GOkTdHaY3n65qJyk5fUMbbWCe2uYLYqKiT5E1PTqLM83/X6ODrv4pL66iXVvA1Hw+00IzsMCfkm8BO13Zd9YRQ==}
+    peerDependencies:
+      react: ^16 || ^17 || ^18
+      zod: ^1 || ^2 || ^3
+
+  monto-email-block-heading@0.0.1:
+    resolution: {integrity: sha512-HaJM8ezFuoowXH8ST5Y+5679C6Fv+mXaxyRnBWfcyhHKSc79ya97x/XtY2FlcjmUExa/a++Lk2rwHZHkUWjw/w==}
     peerDependencies:
       react: ^16 || ^17 || ^18
       zod: ^1 || ^2 || ^3
@@ -162,14 +138,38 @@ packages:
       react: ^16 || ^17 || ^18
       zod: ^1 || ^2 || ^3
 
+  monto-email-block-image@0.0.1:
+    resolution: {integrity: sha512-5Ov3hqh90OfvtrCWvi67LqKvxI6x7vVG2Smj0pgUObowug3I9llQAcoBC5/CcG/g0A5mCILB3K6O2OmZQwoJsQ==}
+    peerDependencies:
+      react: ^16 || ^17 || ^18
+      zod: ^1 || ^2 || ^3
+
   monto-email-block-socials@0.0.8:
     resolution: {integrity: sha512-2WeZVzNE3T8Sr7KuzA3lCPaNmuyz1cxtxcKnlqY25SqjoqTcEjr+dgE9uwljiLAW8a15BG7o61KfELZjvdlONQ==}
     peerDependencies:
       react: ^16 || ^17 || ^18
       zod: ^1 || ^2 || ^3
 
+  monto-email-block-spacer@0.0.1:
+    resolution: {integrity: sha512-df94AB7a0I/G9eWAqKT/41u6gqe2iSiOgu/2mhIid4MS/pQCZfi7maeLBogTg5OBw21JvXSoPc/1z7lQN6mb8Q==}
+    peerDependencies:
+      react: ^16 || ^17 || ^18
+      zod: ^1 || ^2 || ^3
+
+  monto-email-block-text@0.0.1:
+    resolution: {integrity: sha512-LBPtXltlvZi7DC+iUiYz+wA9np6wvkooPNToR1+4nfPR/2erEwbvb+Hz5Ed0fzNi7kwOiNG8cJfEnoGLvnJ53g==}
+    peerDependencies:
+      react: ^16 || ^17 || ^18
+      zod: ^1 || ^2 || ^3
+
   monto-email-block-video@0.0.1:
     resolution: {integrity: sha512-8HEe3PT5WlKNZYPSWh67qpXKEeNWChCOdwv1jIUiKDNiMRslVtf41dyqpJOzNWmn55CyZzog4/6xu68h34H5Ig==}
+    peerDependencies:
+      react: ^16 || ^17 || ^18
+      zod: ^1 || ^2 || ^3
+
+  monto-email-document-core@0.0.1:
+    resolution: {integrity: sha512-vZKK+n5bYpljmbxMpiPaaQKmWb6/sI6UBf3K+jlObAimQNmDAq4nmjEehvAcsauWMjrSxKKJBn210J6QIEP3rw==}
     peerDependencies:
       react: ^16 || ^17 || ^18
       zod: ^1 || ^2 || ^3
@@ -207,48 +207,6 @@ snapshots:
       '@types/prop-types': 15.7.15
       csstype: 3.2.3
 
-  '@usewaypoint/block-button@0.0.3(react@18.3.1)(zod@3.25.76)':
-    dependencies:
-      react: 18.3.1
-      zod: 3.25.76
-
-  '@usewaypoint/block-container@0.0.2(react@18.3.1)(zod@3.25.76)':
-    dependencies:
-      react: 18.3.1
-      zod: 3.25.76
-
-  '@usewaypoint/block-divider@0.0.4(react@18.3.1)(zod@3.25.76)':
-    dependencies:
-      react: 18.3.1
-      zod: 3.25.76
-
-  '@usewaypoint/block-heading@0.0.3(react@18.3.1)(zod@3.25.76)':
-    dependencies:
-      react: 18.3.1
-      zod: 3.25.76
-
-  '@usewaypoint/block-image@0.0.5(react@18.3.1)(zod@3.25.76)':
-    dependencies:
-      react: 18.3.1
-      zod: 3.25.76
-
-  '@usewaypoint/block-spacer@0.0.3(react@18.3.1)(zod@3.25.76)':
-    dependencies:
-      react: 18.3.1
-      zod: 3.25.76
-
-  '@usewaypoint/block-text@0.0.6(react@18.3.1)(zod@3.25.76)':
-    dependencies:
-      insane: 2.6.2
-      marked: 12.0.2
-      react: 18.3.1
-      zod: 3.25.76
-
-  '@usewaypoint/document-core@0.0.6(react@18.3.1)(zod@3.25.76)':
-    dependencies:
-      react: 18.3.1
-      zod: 3.25.76
-
   assignment@2.0.0: {}
 
   csstype@3.2.3: {}
@@ -268,7 +226,27 @@ snapshots:
 
   marked@12.0.2: {}
 
+  monto-email-block-button@0.0.1(react@18.3.1)(zod@3.25.76):
+    dependencies:
+      react: 18.3.1
+      zod: 3.25.76
+
   monto-email-block-columns-container@0.0.2(react@18.3.1)(zod@3.25.76):
+    dependencies:
+      react: 18.3.1
+      zod: 3.25.76
+
+  monto-email-block-container@0.0.2(react@18.3.1)(zod@3.25.76):
+    dependencies:
+      react: 18.3.1
+      zod: 3.25.76
+
+  monto-email-block-divider@0.0.1(react@18.3.1)(zod@3.25.76):
+    dependencies:
+      react: 18.3.1
+      zod: 3.25.76
+
+  monto-email-block-heading@0.0.1(react@18.3.1)(zod@3.25.76):
     dependencies:
       react: 18.3.1
       zod: 3.25.76
@@ -278,12 +256,34 @@ snapshots:
       react: 18.3.1
       zod: 3.25.76
 
+  monto-email-block-image@0.0.1(react@18.3.1)(zod@3.25.76):
+    dependencies:
+      react: 18.3.1
+      zod: 3.25.76
+
   monto-email-block-socials@0.0.8(react@18.3.1)(zod@3.25.76):
     dependencies:
       react: 18.3.1
       zod: 3.25.76
 
+  monto-email-block-spacer@0.0.1(react@18.3.1)(zod@3.25.76):
+    dependencies:
+      react: 18.3.1
+      zod: 3.25.76
+
+  monto-email-block-text@0.0.1(react@18.3.1)(zod@3.25.76):
+    dependencies:
+      insane: 2.6.2
+      marked: 12.0.2
+      react: 18.3.1
+      zod: 3.25.76
+
   monto-email-block-video@0.0.1(react@18.3.1)(zod@3.25.76):
+    dependencies:
+      react: 18.3.1
+      zod: 3.25.76
+
+  monto-email-document-core@0.0.1(react@18.3.1)(zod@3.25.76):
     dependencies:
       react: 18.3.1
       zod: 3.25.76
